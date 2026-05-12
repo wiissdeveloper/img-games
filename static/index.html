@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>MapaGames Browser</title>
+
+  <style>
+    body { background:#0d0d0d; color:#eaeaea; font-family:Arial; margin:0; }
+
+    header {
+      background:#1a1a1a;
+      padding:15px 20px;
+      font-size:24px;
+      font-weight:bold;
+      border-bottom:2px solid #333;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      position:sticky;
+      top:0;
+      z-index:10;
+    }
+
+    .top-controls { display:flex; gap:10px; }
+
+    select, input {
+      padding:10px;
+      border-radius:6px;
+      border:none;
+      background:#222;
+      color:#fff;
+    }
+
+    button {
+      padding:10px 20px;
+      background:#0078ff;
+      border:none;
+      border-radius:6px;
+      color:white;
+      cursor:pointer;
+    }
+
+    .container { padding:20px; max-width:1200px; margin:auto; }
+
+    /* GRID RESPONSIVE */
+    .grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fill, minmax(180px,1fr));
+      gap:15px;
+    }
+
+    .card {
+      background:#1a1a1a;
+      padding:10px;
+      border-radius:8px;
+      border:1px solid #333;
+      cursor:pointer;
+      transition:0.2s;
+    }
+
+    .card:hover { transform:scale(1.03); border-color:#0078ff; }
+
+    .thumb {
+      width:100%;
+      height:180px;
+      object-fit:cover;
+      border-radius:6px;
+      margin-bottom:10px;
+    }
+
+    /* FAKE COVER */
+    .fake-cover {
+      width:100%;
+      height:180px;
+      background:#333;
+      border-radius:6px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:10px;
+      color:#ccc;
+      font-size:14px;
+      margin-bottom:10px;
+    }
+
+    /* MODAL */
+.modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  z-index: 9999;
+}
+
+/* Contenedor del popup */
+.modal-content {
+  background: #1a1a1a;
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 450px;
+
+  /* 🔥 Esto es lo importante */
+  max-height: 90vh;
+  overflow-y: auto;
+
+  text-align: center;
+  box-sizing: border-box;
+}
+
+/* Imagen ajustada a pantalla */
+.modal-img {
+  width: 100%;
+  height: auto;
+
+  /* 🔥 Evita que se salga */
+  max-height: 50vh;
+  object-fit: contain;
+
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.close {
+  float: right;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div>MapaGames Browser</div>
+
+  <div class="top-controls">
+    <select id="systemSelect"></select>
+    <input id="searchInput" type="text" placeholder="Buscar juego...">
+    <button onclick="search()">Buscar</button>
+  </div>
+</header>
+
+<div class="container">
+  <div id="results" class="grid"></div>
+</div>
+
+<!-- MODAL -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span id="closeModal" class="close">&times;</span>
+    <img id="modalImg" class="modal-img">
+    <h2 id="modalTitle"></h2>
+    <p id="modalSystem"></p>
+    <p id="modalExtra"></p>
+  </div>
+</div>
+
+<script>
+async function loadSystems() {
+  const res = await fetch("/api/systems");
+  const systems = await res.json();
+
+  const sel = document.getElementById("systemSelect");
+  sel.innerHTML = `<option value="">Todas las consolas</option>` +
+    systems.map(s => `<option value="${s}">${s}</option>`).join("");
+
+  sel.addEventListener("change", () => search());
+}
+
+function safeImage(game) {
+  if (!game.image_copied || game.image_copied.trim() === "")
+    return null;
+  return `/media/${game.image_copied}`;
+}
+
+async function search() {
+  const q = document.getElementById("searchInput").value;
+  const system = document.getElementById("systemSelect").value;
+
+  const params = new URLSearchParams({ q, system });
+  const res = await fetch("/api/search?" + params.toString());
+  const data = await res.json();
+
+  const div = document.getElementById("results");
+  div.innerHTML = "";
+
+  if (!data.results.length) {
+    div.innerHTML = "<p>No hay resultados.</p>";
+    return;
+  }
+
+  data.results.forEach(game => {
+    const encoded = encodeURIComponent(JSON.stringify(game));
+    const img = safeImage(game);
+
+    div.innerHTML += `
+      <div class="card" onclick='showInfo("${encoded}")'>
+        ${
+          img
+            ? `<img src="${img}" class="thumb">`
+            : `<div class="fake-cover">${game.name}</div>`
+        }
+        <strong>${game.name}</strong><br>
+        <small>${game._system}</small>
+      </div>`;
+  });
+}
+
+function showInfo(encoded) {
+  const game = JSON.parse(decodeURIComponent(encoded));
+
+  const img = safeImage(game);
+  document.getElementById("modalImg").src = img || "";
+  document.getElementById("modalImg").style.display = img ? "block" : "none";
+
+  document.getElementById("modalTitle").textContent = game.name;
+  document.getElementById("modalSystem").textContent = "Consola: " + game._system;
+
+  let extra = "";
+  for (const key in game) {
+    if (["_system", "name", "image_copied"].includes(key)) continue;
+    extra += `<b>${key}:</b> ${game[key]}<br>`;
+  }
+  document.getElementById("modalExtra").innerHTML = extra;
+
+  document.getElementById("modal").style.display = "flex";
+}
+
+document.getElementById("closeModal").onclick = () =>
+  document.getElementById("modal").style.display = "none";
+
+loadSystems();
+search();
+</script>
+
+</body>
+</html>
