@@ -1,0 +1,133 @@
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: #0d1117;
+  color: #e6edf3;
+}
+
+.topbar {
+  background: #161b22;
+  padding: 14px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #30363d;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.badge {
+  background: #21262d;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  margin-left: 6px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 24px auto;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 24px;
+}
+
+.search-panel,
+.results-panel {
+  background: #161b22;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #30363d;
+}
+
+.field {
+  margin-bottom: 14px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #30363d;
+  background: #0d1117;
+  color: #e6edf3;
+}
+
+.btn-primary {
+  background: #238636;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-secondary {
+  background: #30363d;
+  color: #e6edf3;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  background: #0d1117;
+  border: 1px solid #30363d;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.card-image {
+  height: 140px;
+  background-size: cover;
+  background-position: center;
+}
+
+.card-image-placeholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 140px;
+  color: #8b949e;
+  font-size: 0.8rem;
+}
+
+.card-body {
+  padding: 12px;
+}
+
+.card h3 {
+  margin: 0 0 6px;
+  font-size: 1rem;
+}
+
+.card-meta {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #8b949e;
+}
+
+.pagination {
+  margin-top: 16px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.footer {
+  text-align: center;
+  padding: 16px;
+  color: #8b949e;
+  border-top: 1px solid #30363d;
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>MapaGames Browser</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<h1>MapaGames Browser</h1>
+
+<div>
+  <label>Sistema:</label>
+  <select id="systemSelect"></select>
+</div>
+
+<div>
+  <label>Buscar:</label>
+  <input id="searchInput" type="text">
+  <button onclick="search()">Buscar</button>
+</div>
+
+<div id="results"></div>
+
+<script>
+async function loadSystems() {
+  const res = await fetch("/api/search");
+  const data = await res.json();
+
+  const systems = [...new Set(data.results.map(g => g._system))].sort();
+  const sel = document.getElementById("systemSelect");
+
+  sel.innerHTML = `<option value="">Todos</option>` +
+    systems.map(s => `<option value="${s}">${s}</option>`).join("");
+}
+
+async function search(page = 1) {
+  const q = document.getElementById("searchInput").value;
+  const system = document.getElementById("systemSelect").value;
+
+  const params = new URLSearchParams({ q, system, page });
+  const res = await fetch("/api/search?" + params.toString());
+  const data = await res.json();
+
+  const div = document.getElementById("results");
+  div.innerHTML = data.results.map(g =>
+    `<div class="card">
+       <strong>${g.name}</strong><br>
+       <small>${g._system}</small>
+     </div>`
+  ).join("");
+}
+
+loadSystems();
+search();
+</script>
+
+</body>
+</html>
