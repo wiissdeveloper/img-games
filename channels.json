@@ -1,64 +1,79 @@
 [
-	{
+	  {
 		"consola": "PlayStation Vita",
-		"video_espanol": "https://www.youtube.com/embed/gAnpSmsb6-4",
+		"video_espanol": "https://www.youtube.com/embed/onq3vx0Pucw",
 		"canal_espanol": "NanospeedGamer",
 		"link_canal_espanol": "https://www.youtube.com/@NanospeedGamer",
-		"video_ingles": "https://www.youtube.com/embed/Eym6mU7I_wI",
-		"canal_ingles": "Blaine Locklair",
-		"link_canal_ingles": "https://www.youtube.com/@BlaineLocklair",
+
+		"video_ingles": "https://www.youtube.com/embed/X8Achgv5ii4",
+		"canal_ingles": "elgranqenk2",
+		"link_canal_ingles": "https://www.youtube.com/@elgranqenk2",
+
 		"video_frances": "https://www.youtube.com/embed/pCHf62n3WjY",
 		"canal_frances": "Custom Protocol",
 		"link_canal_frances": "https://www.youtube.com/@CustomProtocol",
-		"video_italiano": "https://www.youtube.com/embed/kR84-gq0E6A",
-		"canal_italiano": "Modding Studio",
-		"link_canal_italiano": "https://www.youtube.com/@ModdingStudio"
-	},
-	{
-		"consola": "Nintendo Switch",
-		"video_espanol": "https://www.youtube.com/embed/p1uGfR_7Rk0",
-		"canal_espanol": "NanospeedGamer",
-		"link_canal_espanol": "https://www.youtube.com/@NanospeedGamer",
-		"video_ingles": "https://www.youtube.com/embed/v9N2w9hD1sM",
-		"canal_ingles": "Better Way Electronics",
-		"link_canal_ingles": "https://www.youtube.com/@BetterWayElectronics",
-		"video_frances": "https://www.youtube.com/embed/8yUuM0ZInX0",
-		"canal_frances": "Logic-Sunrise",
-		"link_canal_frances": "https://www.youtube.com/@LogicSunrise",
-		"video_italiano": "https://www.youtube.com/embed/3K9wZ5wepE0",
-		"canal_italiano": "Giustizia Nerd",
-		"link_canal_italiano": "https://www.youtube.com/@GiustiziaNerd"
-	},
-	{
-		"consola": "Nintendo 3DS / 2DS",
-		"video_espanol": "https://www.youtube.com/embed/gbyD03WqR_8",
-		"canal_espanol": "NanospeedGamer",
-		"link_canal_espanol": "https://www.youtube.com/@NanospeedGamer",
-		"video_ingles": "https://www.youtube.com/embed/szX7S4aVw6s",
-		"canal_ingles": "TheRetroFuture",
-		"link_canal_ingles": "https://www.youtube.com/@TheRetroFuture",
-		"video_frances": "https://www.youtube.com/embed/XqGfJ4E32xU",
-		"canal_frances": "Link83",
-		"link_canal_frances": "https://www.youtube.com/@Link83",
-		"video_italiano": "https://www.youtube.com/embed/XjT2o_8K23o",
-		"canal_italiano": "Lorenzo Resta",
-		"link_canal_italiano": "https://www.youtube.com/@LorenzoResta"
-	},
-	{
-		"consola": "PlayStation Portable (PSP)",
-		"video_espanol": "https://www.youtube.com/embed/Lnd0O8K1uRE",
-		"canal_espanol": "NanospeedGamer",
-		"link_canal_espanol": "https://www.youtube.com/@NanospeedGamer",
-		"video_ingles": "https://www.youtube.com/embed/BLm6Z68N0bA",
-		"canal_ingles": "MrMario2011",
-		"link_canal_ingles": "https://www.youtube.com/@MrMario2011",
-		"video_frances": "https://www.youtube.com/embed/vD8Yt57kZ1c",
-		"canal_frances": "GamerGen",
-		"link_canal_frances": "https://www.youtube.com/@GamerGen",
-		"video_italiano": "https://www.youtube.com/embed/v2l78P-K_bE",
-		"canal_italiano": "RetroGaming Italia",
-		"link_canal_italiano": "https://www.youtube.com/@RetroGamingItalia"
-	},
+
+		"video_italiano": "",
+		"canal_italiano": "",
+		"link_canal_italiano": ""
+	  },
+{
+  "consola": "Nintendo Switch",
+
+  "video_espanol": "https://www.youtube.com/embed/MMmkvCpVsEc",
+  "canal_espanol": "NanospeedGamer",
+  "link_canal_espanol": "https://www.youtube.com/@NanospeedGamer",
+
+  "video_ingles": "https://www.youtube.com/embed/uqhZpjHFud4",
+  "canal_ingles": "Taki Udon",
+  "link_canal_ingles": "https://www.youtube.com/@TakiUdon",
+
+  "video_frances": "",
+  "canal_frances": "",
+  "link_canal_frances": "",
+
+  "video_italiano": "",
+  "canal_italiano": "",
+  "link_canal_italiano": ""
+},
+{
+  "consola": "Nintendo 3DS / 2DS",
+
+  "video_espanol": "https://www.youtube.com/watch?v=HtLHVzBqtds",
+  "canal_espanol": "NicoHardware",
+  "link_canal_espanol": "https://www.youtube.com/@nicohardware10",
+
+  "video_ingles": "https://www.youtube.com/watch?v=aLefbewpODA",
+  "canal_ingles": "Anton Retro",
+  "link_canal_ingles": "https://www.youtube.com/@AntonRetro",
+
+  "video_frances": "https://www.youtube.com/watch?v=O4UDNtsYBR8",
+  "canal_frances": "Jack Sorrell",
+  "link_canal_frances": "https://www.youtube.com/@JackSorrell,
+
+  "video_italiano": "",
+  "canal_italiano": "",
+  "link_canal_italiano": ""
+},
+{
+  "consola": "PlayStation Portable (PSP)",
+
+  "video_espanol": "https://www.youtube.com/watch?v=kPadjHj8OZo&t=629s",
+  "canal_espanol": "NanospeedGamer",
+  "link_canal_espanol": "https://www.youtube.com/@NanospeedGamer",
+
+  "video_ingles": "https://www.youtube.com/embed/BLm6Z68N0bA",
+  "canal_ingles": "MrMario2011",
+  "link_canal_ingles": "https://www.youtube.com/@MrMario2011",
+
+  "video_frances": "https://www.youtube.com/embed/vD8Yt57kZ1c",
+  "canal_frances": "PSPStation",
+  "link_canal_frances": "https://pspstation.org",
+
+  "video_italiano": "https://www.youtube.com/embed/vqb1cVlN93M",
+  "canal_italiano": "Intriguing Tech",
+  "link_canal_italiano": "https://www.youtube.com/@IntriguingTech"
+},
 	{
 		"consola": "PlayStation 3",
 		"video_espanol": "https://www.youtube.com/embed/L_42lXzZt8Y",
